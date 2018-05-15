@@ -108,7 +108,7 @@ client.on("message", async message => {
   
 
   if(command === "say") {
-    if(!message.member.roles.some(r=>["436395080618606631"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["425285393491951618", "436395080618606631"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
@@ -120,7 +120,7 @@ client.on("message", async message => {
   }
 	
 if(command === "set") {
-  if(!message.member.roles.some(r=>["436395080618606631"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["425285393491951618", "436395080618606631"].includes(r.name)) )
   return message.reply("Je hebt hier geen perms voor");
   const sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
@@ -130,7 +130,7 @@ if(command === "set") {
 if(command === "members")
 	
   if(command === "warn") {
-    if(!message.member.roles.some(r=>["436395080618606631"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["425285393491951618", "436395080618606631"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
@@ -146,7 +146,7 @@ if(command === "members")
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-    if(!message.member.roles.some(r=>["436395080618606631"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["425285393491951618", "436395080618606631"].includes(r.name)) )
       return message.reply("dacht je nu echt dat jij iemand kon kicken XD");
     
     // Let's first check if we have a member and if we can kick them!
@@ -173,7 +173,7 @@ if(command === "members")
   if(command === "ban") {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["436395080618606631"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["425285393491951618", "436395080618606631"].includes(r.name)) )
       return message.reply("srs !ban dacht je nou echt.......");
     
     let member = message.mentions.members.first();
@@ -191,7 +191,7 @@ if(command === "members")
   }
   
   if(command === "clear") {
-    if(!message.member.roles.some(r=>["436395080618606631"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["425285393491951618", "436395080618606631"].includes(r.name)) )
     return message.reply("je kan geen !clear vraag aan een CEO of head-support om hulp");
     // This command removes all messages from all users in the channel, up to 100.
     

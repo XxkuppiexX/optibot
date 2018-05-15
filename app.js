@@ -12,7 +12,7 @@ const config = require("./config.json");
 // config.prefix contains the message prefix.
 
 client.on("ready", () => {
-  client.user.setActivity(`met vince en lars`);
+  client.user.setActivity(`OptiDisigns`);
 });
 
 function clean(text) {
@@ -31,7 +31,7 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
     if (message.guild.channels.exists("name", "ticket-" + message.author.username)) return message.channel.send(`Jij hebt op dit moment al een ticket open.`);
     message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
-        let role = message.guild.roles.find("name", "⚙️ Support ⚙️");
+        let role = message.guild.roles.find("name", "425285393491951618", "436395080618606631");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
             SEND_MESSAGES: true,

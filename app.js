@@ -108,7 +108,7 @@ client.on("message", async message => {
   
 
   if(command === "say") {
-    if(!message.member.roles.some(r=>["445548497786372097", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["445548497786372097", "🎓 | Owner", "Co-Owner", "PROFESOR"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 

@@ -35,7 +35,7 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
     if (message.guild.channels.exists("name", "ticket-" + message.author.username)) return message.channel.send(`Jij hebt op dit moment al een ticket open.`);
     message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
-        let role = message.guild.roles.find("name", "445548497786372097", "425285393491951618", "436395080618606631");
+        let role = message.guild.roles.find("name", "425285393491951618", "436395080618606631");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
             SEND_MESSAGES: true,

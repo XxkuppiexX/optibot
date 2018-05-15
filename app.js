@@ -117,7 +117,7 @@ client.on("message", async message => {
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
     message.channel.send({embed: {
-      color: "RED",
+      color: RED,
       description: (sayMessage)
     }});
   }

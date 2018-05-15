@@ -116,7 +116,10 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send(sayMessage);
+    message.channel.send({embed: {
+      color: 3447003,
+      description: (sayMessage)
+    }});(sayMessage);
   }
 	
 if(command === "set") {
@@ -126,9 +129,7 @@ if(command === "set") {
   message.delete().catch(O_o=>{});
   client.user.setActivity(sayMessage);
 }
-  
-if(command === "members")
-	
+  	
   if(command === "warn") {
     if(!message.member.roles.some(r=>["445548497786372097", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");

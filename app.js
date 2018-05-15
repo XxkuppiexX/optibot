@@ -119,7 +119,7 @@ client.on("message", async message => {
     message.channel.send({embed: {
       color: 3447003,
       description: (sayMessage)
-    }});(sayMessage);
+    }});
   }
 	
 if(command === "set") {

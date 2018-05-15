@@ -12,7 +12,7 @@ const config = require("./config.json");
 // config.prefix contains the message prefix.
 
 client.on("ready", () => {
-  client.user.setActivity(`OptiDisigns`);
+  client.user.setActivity(`OptiDesigns`);
 });
 
 function clean(text) {

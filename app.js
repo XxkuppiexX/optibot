@@ -48,7 +48,7 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
         message.channel.send(`:white_check_mark: Je ticket is gemaakt, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `Je hebt een ticket geopend probeer zo goed mogelijk uit te leggen waarom je deze ticket hebt geopent. Onze Support zal je dan zo snel mogelijk helpen.`)
+        .addField(`Hey ${message.author.username}!` + (reason))
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);

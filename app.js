@@ -11,6 +11,10 @@ const config = require("./config.json");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
 
+client.on('guildMemberAdd', member => {
+member.kick
+});
+
 client.on("ready", () => {
   client.user.setActivity(`OptiDesigns`);
 });

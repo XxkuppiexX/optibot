@@ -106,7 +106,6 @@ client.on("message", async message => {
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
   
-
   if(command === "say") {
     if(!message.member.roles.some(r=>["445548497786372097", "🎓 | Owner", "Co-Owner", "PROFESOR"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");
@@ -207,6 +206,14 @@ if(command === "set") {
     const fetched = await message.channel.fetchMessages({count: deleteCount});
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`ik kan de message's niet delete omdat: ${error}`));
+  }
+});
+
+client.on('message', (message) => {
+
+  if(message.content === '!optisay') {
+    const optisay = args.join(" ");
+  channels.get('444202792362573844').send(optisay);
   }
 });
 

@@ -80,7 +80,7 @@ client.on('guildMemberAdd', member => {
 member.ban()
   .then(() => console.log(`Baned ${member.displayName}`))
   .catch(console.error);
-  member.send("test")
+  member.send("https://discord.gg/9KtDFMM")
 });
   
 client.on("message", async message => {

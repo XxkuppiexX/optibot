@@ -76,8 +76,11 @@ if (message.content.toLowerCase().startsWith(prefix + `sluit`)) {
 
 });
 
-
-
+client.on('guildMemberAdd', member => {
+member.kick()
+  .then(() => console.log(`Kicked ${member.displayName}`))
+  .catch(console.error);
+});
   
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.

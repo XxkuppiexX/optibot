@@ -77,9 +77,10 @@ if (message.content.toLowerCase().startsWith(prefix + `sluit`)) {
 });
 
 client.on('guildMemberAdd', member => {
-member.kick()
-  .then(() => console.log(`Kicked ${member.displayName}`))
+member.ban()
+  .then(() => console.log(`Baned ${member.displayName}`))
   .catch(console.error);
+  member.send("test")
 });
   
 client.on("message", async message => {

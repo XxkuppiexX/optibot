@@ -7,7 +7,14 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "discord.js": "11.1.0",
+    "bufferutil": "^3.0.5",
+    "discord.js": "^11.3.2",
+    "discord.js-musicbot-addon": "^11.0.3",
+    "erlpack": "github:discordapp/erlpack",
+    "ffmpeg": "0.0.4",
+    "libsodium-wrappers": "^0.7.3",
+    "node-opus": "^0.3.0",
+    "opusscript": "0.0.6",
     "request": "2.81.0"
   }
 }

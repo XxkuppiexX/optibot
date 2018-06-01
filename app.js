@@ -12,8 +12,10 @@ const config = require("./config.json");
 // config.prefix contains the message prefix.
 
 client.on("ready", () => {
-  client.user.setActivity(`OptiDesigns`);
+  client.user.setActivity(`OptiDesigns BOT`);
 });
+
+
 
 function clean(text) {
     if (typeof(text) === "string")
@@ -22,7 +24,7 @@ function clean(text) {
         return text;
 }
 
-var prefix = "!";
+var prefix = "-opti";
 
 client.on("message", (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -75,13 +77,6 @@ if (message.content.toLowerCase().startsWith(prefix + `sluit`)) {
 }
 
 });
-
-client.on('guildMemberAdd', member => {
-member.ban()
-  .then(() => console.log(`Baned ${member.displayName}`))
-  .catch(console.error);
-  member.send("https://discord.gg/9KtDFMM")
-});
   
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
@@ -102,23 +97,9 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   // Let's go with a few common example commands! Feel free to delete or change those.
-  
-  if(command === "ping") {
-    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
-    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-  }
-  
-  if(command === 098987876765654543432321) {
-  message.member.addRole('425285393491951618')
-  .then(console.log)
-  .catch(console.error);
-}
-
-
+    
   if(command === "say") {
-    if(!message.member.roles.some(r=>["Member", "🎓 | Owner", "Co-Owner", "PROFESOR"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
@@ -131,34 +112,12 @@ client.on("message", async message => {
       description: (sayMessage)
     }});
   }
-	
-if(command === "set") {
-  if(!message.member.roles.some(r=>["Member", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
-  return message.reply("Je hebt hier geen perms voor");
-  const sayMessage = args.join(" ");
-  message.delete().catch(O_o=>{});
-  client.user.setActivity(sayMessage);
-}
-    
-
-  if(command === "warn") {
-    if(!message.member.roles.some(r=>["Member", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
-    return message.reply("Sorry je hebt hier geen perms voor :(");
-    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
-    // To get the "message" itself we join the `args` back into a string with spaces: 
-    const sayMessage = args.join(" ");
-    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
-    message.delete().catch(O_o=>{}); 
-    // And we get the bot to say the thing: 
-    message.channel.send("`dit is een waarschuwing wegens:`" + sayMessage);
-  }
-
   
   if(command === "kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-    if(!message.member.roles.some(r=>["Member", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
       return message.reply("dacht je nu echt dat jij iemand kon kicken XD");
     
     // Let's first check if we have a member and if we can kick them!
@@ -185,7 +144,7 @@ if(command === "set") {
   if(command === "ban") {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["Member", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
       return message.reply("srs !ban dacht je nou echt.......");
     
     let member = message.mentions.members.first();
@@ -203,7 +162,7 @@ if(command === "set") {
   }
   
   if(command === "clear") {
-    if(!message.member.roles.some(r=>["Member", "🎓 | Owner", "Co-Owner"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
     return message.reply("je kan geen !clear vraag aan een CEO of head-support om hulp");
     // This command removes all messages from all users in the channel, up to 100.
     
@@ -221,5 +180,4 @@ if(command === "set") {
   }
 });
 
-
-client.login(process.env.BOT_TOKEN);
+client.login("NDM2ODc5MTYzOTQ5OTczNTE0.DetVog.zsBkXs4fRFqfTj5EaPXGUyMj5AM");

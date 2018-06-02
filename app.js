@@ -48,7 +48,8 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
             READ_MESSAGES: true
         });
         message.channel.send(`:white_check_mark: Je ticket is gemaakt, #${c.name}.`);
-        channel.setParent('452378264002887691')
+        c.setParent('452378264002887691')
+        .catch(console.error);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
         .addField(`Hey ${message.author.username}!`, + (reason))
@@ -56,21 +57,25 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
         c.send({ embed: embed });
     }).catch(console.error);
 }
-if (message.content.toLowerCase().startsWith(prefix + `sluit`)) {
+if (message.content.toLowerCase().startsWith(prefix + `done`)) {
     if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`je kan het ticket niet sluiten als je niet in de channel van de ticket zit.`);
 
-    message.channel.send(`Weet je het zeker? Deze actie kan niet ongedaan worden gemaakt\nAls je het zeker weet typ \`!ikweethetzeker\`. Na 10 seconde word dit geanuleerd en zal dit ticket niet verwijderd worden.`)
+    message.channel.send(`Weet je het zeker? Deze actie kan niet ongedaan worden gemaakt\nAls je het zeker weet typ \`!ja\`. Na 10 seconde word dit geanuleerd en zal dit ticket niet verwijderd worden.`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === '!ikweethetzeker', {
+      message.channel.awaitMessages(response => response.content === '!ja', {
         max: 1,
         time: 10000,
         errors: ['time'],
       })
       .then((collected) => {
-          message.channel.delete();
+          message.channel.setParent("452383683119284224")
+          c.overwritePermissions(message.author, {
+            SEND_MESSAGES: false,
+            READ_MESSAGES: false
+        });
         })
         .catch(() => {
-          m.edit('Je hebt geen !ikweethetzeker getypt, het ticket word niet gesloten').then(m2 => {
+          m.edit('Je hebt geen !ja getypt, het ticket word niet gesloten').then(m2 => {
               m2.delete();
           }, 3000);
         });

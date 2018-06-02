@@ -48,6 +48,7 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
             READ_MESSAGES: true
         });
         message.channel.send(`:white_check_mark: Je ticket is gemaakt, #${c.name}.`);
+        channel.setParent('452378264002887691')
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
         .addField(`Hey ${message.author.username}!`, + (reason))
@@ -97,7 +98,34 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   // Let's go with a few common example commands! Feel free to delete or change those.
-    
+   if(command === "mute") {
+    let reason = args.slice(1).join(' ');
+    let member = message.mentions.members.first();
+    let muteRole = message.guild.roles.find('name', 'Mute');
+    if (!muteRole) return message.reply('Er is geen mute rol').catch(console.error);
+    if (message.mentions.users.size < 1) return message.reply('Je moet iemand taggen die je wilt muten').catch(console.error);
+    const embed = new Discord.RichEmbed()
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .setDescription(`Un/mute\n: ${member.user.tag}\n**Door:** ${message.author.tag}\n**Reden:** ${reason}`);
+  
+    if (!message.guild.me.hasPermission('MANAGE_ROLES')) return message.reply('Je heb hier geen perms voor').catch(console.error);
+  
+    if (member.roles.has(muteRole.id)) {
+      member.removeRole(muteRole).then(() => {
+        client.channels.get(modlog.id).send({embed}).catch(console.error);
+      })
+      .catch(e=>console.error("Ik kan hem niet unmute omday: " + e));
+    } else {
+      member.addRole(muteRole).then(() => {
+        client.channels.get(modlog.id).send({embed}).catch(console.error);
+      })
+      .catch(e=>console.error("Ik kan hem geen mute geven omdat: " + e));
+    }
+  
+  };
+
+
   if(command === "say") {
     if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
     return message.reply("Sorry je hebt hier geen perms voor :(");

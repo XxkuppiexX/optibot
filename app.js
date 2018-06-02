@@ -30,6 +30,8 @@ client.on("message", (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
+  if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
+  return message.reply("Door een tekort aan designers kun je tijdelijk geen tickets aanmaken. Later zien we je graag terug");
     const reason = message.content.split(" ").slice(1).join(" ");
     if (message.guild.channels.exists("name", "ticket-" + message.author.username)) return message.channel.send(`Jij hebt op dit moment al een ticket open.`);
     message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {

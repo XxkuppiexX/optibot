@@ -54,7 +54,7 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
         .catch(console.error);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, + (reason))
+        .addField(`Hey ${message.author.username}!`, + "***:tada: Welkom bij onze eigen  ticket systeem!! :tada:\n\n:art: Hier mag je beschrijven wat voor designs (of iets anders) u wilt zodat onze designers percies weten wat hun moeten maken!!! :art:\n==========================================================================\n:100: We zullen u zo snel mogelijk helpen en zorgen voor een zo goed mogelijk resultaat!! :100:\n==========================================================================\n:alarm_clock: Neem zeker uw tijd en neem geniet van onze snelle service en klantvriendelijkheid! :alarm_clock:\n=====================================================================:warning: LET OP: Uw eerste bestelling is gratis, we kunnen welke bestelling van u zien!! :warning:\n\nMet vriendelijke groet,\n\nHet Optimus DesignTeam :optimus: :heart:***")
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);

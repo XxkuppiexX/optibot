@@ -30,8 +30,6 @@ client.on("message", (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
-  if(!message.member.roles.some(r=>["🎓 | Owner", "Co-Owner"].includes(r.name)) )
-  return message.reply("Sorry dit command is tijdelijk niet beschikbaar.");
     const reason = message.content.split(" ").slice(1).join(" ");
     if (message.guild.channels.exists("name", "ticket-" + message.author.username)) return message.channel.send(`Jij hebt op dit moment al een ticket open.`);
     message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
@@ -51,12 +49,7 @@ if (message.content.toLowerCase().startsWith(prefix + `nieuw`)) {
         });
         message.channel.send(`:white_check_mark: Je ticket is gemaakt, #${c.name}.`);
         c.setParent('452378264002887691')
-        .catch(console.error);
-        const embed = new Discord.RichEmbed()
-        .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, + "***:tada: Welkom bij onze eigen  ticket systeem!! :tada:\n\n:art: Hier mag je beschrijven wat voor designs (of iets anders) u wilt zodat onze designers percies weten wat hun moeten maken!!! :art:\n==========================================================================\n:100: We zullen u zo snel mogelijk helpen en zorgen voor een zo goed mogelijk resultaat!! :100:\n==========================================================================\n:alarm_clock: Neem zeker uw tijd en neem geniet van onze snelle service en klantvriendelijkheid! :alarm_clock:\n=====================================================================:warning: LET OP: Uw eerste bestelling is gratis, we kunnen welke bestelling van u zien!! :warning:\n\nMet vriendelijke groet,\n\nHet Optimus DesignTeam :optimus: :heart:***")
-        .setTimestamp();
-        c.send({ embed: embed });
+        c.send("**========================================\n   :exclamation: Welkom bij onze Ticket!! :exclamation: \n=========================================\n\nWelkom bij onze ticket systeem!! Wij hebben een eigen bot om nog zekerder te zijn dat wij alles groot aanpakken en proberen zo professioneel mogelijk te zin!! :tada:\n\n:waring: Hier volgt wat uitleg! :waring:\n\n1. U heeft een ticket aangemaakt voor wat u wilt.. :tada: <3\n\n2. Beschrijf uw Design aub zo goed mogelijk om de Designer te laten weten wat je percies wilt!! :art:\n\n3. Als u uw Designs heeft uitgelegd gaan onze Designers ermee aan de slag!! :wink: :tada:\n\n4. Dat was alles wat we wouden weten en dat waren zo een beetje de stappen!! Bedankt voor uw begrip en hoop dat we het beste ervan maken!! :tada: :100:\n\nMet vriendelijke groet:\n\nHet Optimus DesignerTeam**")
     }).catch(console.error);
 }
 if (message.content.toLowerCase().startsWith(prefix + `done`)) {
